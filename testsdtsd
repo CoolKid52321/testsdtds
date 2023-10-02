@@ -1,5 +1,5 @@
-local hitrange = 15
-local hitdelay = 0.2
+local hitrange = 10
+local hitdelay = 0
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
@@ -8,13 +8,15 @@ local Player = Players.LocalPlayer or Players.PlayerAdded:Wait()
 local Remotes = ReplicatedStorage:WaitForChild("Remotes", 9e9)
 local Balls = workspace:WaitForChild("Balls", 9e9)
 
+print("enabled")
+
 local function VerifyBall(Ball)
     if typeof(Ball) == "Instance" and Ball:IsA("BasePart") and Ball:IsDescendantOf(Balls) and Ball:GetAttribute("realBall") == true then
         return true
     end
 end
 
-local function IsTarget() -- Returns true if we are the current target.
+local function IsTarget()
     return (Player.Character and Player.Character:FindFirstChild("Highlight"))
 end
 
